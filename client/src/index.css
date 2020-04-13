@@ -138,6 +138,16 @@ img {
     transition: opacity 0.2s ease-in;
     outline: none;
 }
+.other-btn {
+    display: inline-block;
+    background: var(--light-color);
+    color: blue;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in;
+    outline: none;
+}
 
 .badge {
     font-size: 0.8rem;
@@ -216,7 +226,10 @@ img {
 
 .round-img {
     border-radius: 50%;
-    /* width: 250px; */
+    width: 60px;
+    /* position: relative;
+    bottom: 35px; */
+
 }
 
 .line {
@@ -361,16 +374,66 @@ button {
 
 /* Profiles Page */
 .profile {
+    max-width: 450px;
+
     display: grid; 
-    grid-template-columns: 2fr 4fr 2fr;
+    grid-template-columns: 1fr 4fr;
     align-items: center;
-    grid-gap: 2rem;
+    grid-gap: 1rem 2rem;
     padding: 1rem;
     line-height: 1.8;
     margin-bottom: 1rem;
 }
 
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+
+/* .Gif > div > div {
+    visibility: hidden;
+} */
+
+.Gif-animate > div {
+    /* visibility: hidden; */
+}
+
+
+.Gif > * {
+    /* display: none; */
+    background-color: white !important;
+    margin: 0 auto;
+}
+
+.Gif > div > input::placeholder {
+    visibility: hidden !important;
+    color: black;
+}
+
+.Gif > div > input {
+    color: black;
+}
+
+.justify-end {
+    justify-self: end;
+}
 /* Profile Page */
+.profiles {
+    
+    display: grid; 
+    /* grid-template-columns: 1fr 1fr; */
+    grid-gap: 1rem;
+}
+@media (min-width: 600px) {
+    .profiles { grid-template-columns: repeat(2, 1fr); }
+  }
 .profile-grid {
     display: grid;
     grid-template-areas:
@@ -471,11 +534,21 @@ button {
 
 .post {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
     grid-gap: 2rem;
     align-items: center;
 }
+.posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
 
+}
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
 .post > div:first-child {
     text-align: center;
 }

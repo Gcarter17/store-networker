@@ -2,13 +2,27 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addComment } from '../../store/actions/post'
+import GifSearch from "react-gif-search";
 
 
 const CommentForm = ({ addComment, postId }) => {
     const [text, setText] = useState('')
+    const [status, setStatus] = useState(false);
+    const [term, setTerm] = useState('')
 
     return (
         <div class="post-form">
+            <button onClick={() => setStatus(!status)}>
+                {status ? 'on' : 'off'}
+            </button>
+            <div className="Gif" style={!status ? { display: 'none' } : { display: 'block', animation: 'fadein 1.5s' }} >
+                <GifSearch
+                    className={term ? "Gif-animate" : null}
+                    // A callback for when a search is actually made
+                    onDidSearch={term => setTerm(term)}
+                />
+            </div>
+
             <div class="bg-primary p">
                 <h3>Leave a Comment</h3>
             </div>
@@ -26,8 +40,10 @@ const CommentForm = ({ addComment, postId }) => {
                     onChange={e => setText(e.target.value)}
                     required
                 ></textarea>
+
                 <input type="submit" class="btn btn-dark my-1" value="Submit" />
             </form>
+
         </div>
     )
 }

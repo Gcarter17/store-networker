@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import { connect } from 'react-redux'
 import { addLike, removeLike, deletePost } from '../../store/actions/post'
+import GifPlayer from 'react-gif-player'
 
 const PostItem = ({
     addLike,
@@ -27,6 +28,7 @@ const PostItem = ({
                 </Link>
             </div>
             <div>
+                <GifPlayer gif="https://media2.giphy.com/media/HZpCCbcWc0a3u/giphy.gif" />
                 <p class="my-1">
                     {text}
                 </p>
