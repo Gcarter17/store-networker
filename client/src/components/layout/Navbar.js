@@ -35,7 +35,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     );
     const guestLinks = (
         <ul>
-            <li><Link to="/profiles">Developers</Link></li>
+            {/* <li><Link to="/profiles">Co-Workers</Link></li> */}
             <li><Link to="/register">Register</Link></li>
             <li><Link to="/login">Login</Link></li>
         </ul>
@@ -44,7 +44,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     return (
         <nav className="navbar bg-dark">
             <h1>
-                <Link to="/"><i className="fas fa-code"></i> Dev-Networker</Link>
+                {/* <Link to="/"><i className="fas fa-code"></i> Store-Networker</Link> */}
+                <Link to="/">Store-Networker</Link>
             </h1>
             {!loading ? <>{isAuthenticated ? authLinks : guestLinks}</> : null}
         </nav>

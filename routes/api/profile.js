@@ -194,15 +194,24 @@ router.put(
         const { title, company, location, from, to, current, description } = req.body;
 
         const newExp = { title, company, location, from, to, current, description };
+        
 
         try {
             const profile = await Profile.findOne({ user: req.user.id });
 
-            profile.experience.unshift(newExp);
+                if (profile.experience.length < 2) {
+                    profile.experience.unshift(newExp);
 
-            await profile.save();
-
-            res.json(profile);
+                    await profile.save();
+        
+                    res.json(profile);
+                } else {
+                    // return res.status(400).json({ msg: "user has max amaount"});
+                    // console.log('the user has the max amount')
+                    return res.status(400).send("User has max amount of this type of post");
+                }
+                
+                        
         } catch (err) {
             console.error(err.message);
             res.status(500).send("Server Error");
@@ -276,15 +285,25 @@ router.put(
             current,
             description
         };
-
         try {
             const profile = await Profile.findOne({ user: req.user.id });
 
-            profile.education.unshift(newEdu);
+            if (profile.education.length < 2) {
+                
+                profile.education.unshift(newEdu);
 
-            await profile.save();
+                await profile.save();
+    
+                res.json(profile);
+            } else { 
+                return res.status(400).send("User has max amount of this type of post");
+            }
+            // profile.education.unshift(newEdu);
 
-            res.json(profile);
+            //     await profile.save();
+    
+            //     res.json(profile);
+
         } catch (err) {
             console.error(err.message);
             res.status(500).send("Server Error");

@@ -22,7 +22,7 @@ const AddEducation = ({ addEducation, history }) => {
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
     return (
-        <>
+        <div className="feed-container">
             <h1 class="large text-primary">
                 Add Your Education
             </h1>
@@ -71,7 +71,7 @@ const AddEducation = ({ addEducation, history }) => {
                 <input type="submit" class="btn btn-primary my-1" />
                 <Link class="btn btn-light my-1" to="/dashboard">Go Back</Link>
             </form>
-        </>
+        </div>
     )
 }
 

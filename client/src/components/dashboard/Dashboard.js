@@ -21,7 +21,7 @@ const Dashboard = ({
     }, [getCurrentProfile])
 
     return loading && profile === null ? <Spinner /> :
-        <>
+        <div className="feed-container">
             <h1 className='large text-primary'>Dashboard</h1>
             <p className='lead'><i className="fas fa-user"></i> Welcome {user && user.name}</p>
             {profile !== null ?
@@ -42,7 +42,7 @@ const Dashboard = ({
                     <Link to='/create-profile' className='btn btn-primary my-1'>Create Profile</Link>
                 </>
             }
-        </>
+        </div>
 }
 
 Dashboard.propTypes = {

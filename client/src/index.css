@@ -44,6 +44,15 @@ img {
     margin-bottom: 3rem;
 }
 
+.feed-container {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.red {
+    background: red;
+}
 /* Text Styles*/
 .x-large {
     font-size: 4rem;

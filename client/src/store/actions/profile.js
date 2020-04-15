@@ -108,7 +108,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
             history.push('/dashboard')
         }
     } catch (err) {
-        const errors = err.response.data.errors;
+        const errors = err.response.data;
 
         if (errors) {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
@@ -137,20 +137,21 @@ export const addExperience = (formData, history) => async dispatch => {
             payload: res.data
         })
 
-        dispatch(setAlert('Experience Added', 'success'))
+        dispatch(setAlert('Post Added', 'success'))
 
         history.push('/dashboard')
 
     } catch (err) {
-        const errors = err.response.data.errors;
+        const errors = err.response.data;
 
         if (errors) {
-            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
-        }
-
+            dispatch(setAlert(errors, 'danger'))
+            // errors.forEach(error => dispatch(setAlert(error, 'danger')))
+        } 
+        
         dispatch({
             type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
+            payload: { msg: err.response.data, status: err.response.status }
         })
     }
 }
@@ -176,11 +177,16 @@ export const addEducation = (formData, history) => async dispatch => {
         history.push('/dashboard')
 
     } catch (err) {
-        const errors = err.response.data.errors;
+        console.log(err)
+        const errors = err.response.data;
 
+        // if (errors) {
+        //     errors.forEach(error => dispatch(setAlert(error, 'danger')))
+        // }
         if (errors) {
-            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
-        }
+            dispatch(setAlert(errors, 'danger'))
+            // errors.forEach(error => dispatch(setAlert(error, 'danger')))
+        } 
 
         dispatch({
             type: PROFILE_ERROR,

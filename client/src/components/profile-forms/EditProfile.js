@@ -64,7 +64,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
     }
 
     return (
-        <>
+        <div className="feed-container">
             <h1 className="large text-primary">Create Your Profile</h1>
             <p className="lead">
                 <i className="fas fa-user"></i> Let's get some information to make your
@@ -160,7 +160,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
 
 
 
-        </>
+        </div>
     )
 }
 

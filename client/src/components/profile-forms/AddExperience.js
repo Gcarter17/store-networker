@@ -3,13 +3,14 @@ import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addExperience } from '../../store/actions/profile'
+import moment from 'moment'
 
 const AddExperience = ({ addExperience, history }) => {
     const [formData, setFormData] = useState({
         company: '',
         title: '',
         location: '',
-        from: '',
+        from: `${moment().format('YYYY-MM-DD')}`,
         to: '',
         current: false,
         description: ''
@@ -22,13 +23,12 @@ const AddExperience = ({ addExperience, history }) => {
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
     return (
-        <>
+        <div className="feed-container">
             <h1 class="large text-primary">
-                Add An Experience
+                Look for shifts (experience)
             </h1>
             <p class="lead">
-                <i class="fas fa-code-branch"></i> Add any developer/programming
-                positions that you have had in the past
+                <i class="fas fa-code-branch"></i> Build a post that will alert others what shifts you might want to pick up.
             </p>
             <small>* = required field</small>
             <form class="form" onSubmit={e => {
@@ -46,8 +46,19 @@ const AddExperience = ({ addExperience, history }) => {
                 </div>
                 <div class="form-group">
                     <h4>From Date</h4>
-                    <input type="date" name="from" value={from} onChange={e => onChange(e)} />
+                    <h5>make these h5s (i) information buttons to appear</h5>
+                    <h5>(Post can be made to appear in feed anywhere between now and a year from now )</h5>
+                    {/* <input type="date" name="from" value={from} onChange={e => onChange(e)} /> */}
+                    <input min={moment().format('YYYY-MM-DD')} max={moment(from).add(365, 'days').format('YYYY-MM-DD')} type="date" name="from" value={from} onChange={e => onChange(e)} />
                 </div>
+                <h1>{moment(from).add(30, 'days').format('YYYY-MM-DD')}</h1>
+                <h1>{moment().format('YYYY-MM-DD')}</h1>
+                {/* <input id="today" type="date">
+                <script>
+                document.getElementById('today').value = moment().format('YYYY-MM-DD');
+                </script> */}
+
+
                 <div class="form-group">
                     <p><input type="checkbox" name="current" checked={current} value={current}
                         onChange={e => {
@@ -58,7 +69,8 @@ const AddExperience = ({ addExperience, history }) => {
                 </div>
                 <div class="form-group">
                     <h4>To Date</h4>
-                    <input type="date" name="to" value={to} onChange={e => onChange(e)} disabled={toDateDisabled ? 'disabled' : ''} />
+                    <h5>(Post expires up to 30 days after "From Date")</h5>
+                    <input min={moment(from).add(1, 'days').format('YYYY-MM-DD')} max={moment(from).add(30, 'days').format('YYYY-MM-DD')} type="date" name="to" value={to} onChange={e => onChange(e)} disabled={toDateDisabled ? 'disabled' : ''} />
                 </div>
                 <div class="form-group">
                     <textarea
@@ -72,7 +84,7 @@ const AddExperience = ({ addExperience, history }) => {
                 <input type="submit" class="btn btn-primary my-1" />
                 <Link class="btn btn-light my-1" to="/dashboard">Go Back</Link>
             </form>
-        </>
+        </div>
     )
 }
 

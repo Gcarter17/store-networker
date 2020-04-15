@@ -21,7 +21,7 @@ const Education = ({ education, deleteEducation }) => {
 
     return (
         <>
-            <h2 className="my-2">Education Credentials</h2>
+            <h2 className="my-2">Shifts currently offering up (education)</h2>
             <table className='table'>
                 <thead>
                     <tr>
