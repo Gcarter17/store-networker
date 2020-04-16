@@ -9,12 +9,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <ul>
             <li>
                 <Link to="/profiles">
-                    Developers
+                    Profiles
                 </Link>
             </li>
             <li>
                 <Link to="/posts">
-                    Posts
+                    Discussion
                 </Link>
             </li>
             <li>

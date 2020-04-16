@@ -37,13 +37,14 @@ const CreateProfile = ({ createProfile, history }) => {
         instagram
     } = formData
 
+    
+
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
     const onSubmit = e => {
         e.preventDefault();
         createProfile(formData, history)
     }
-
     return (
         <div className="feed-container">
             <h1 className="large text-primary">Create Your Profile</h1>
@@ -147,6 +148,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
 CreateProfile.propTypes = {
     createProfile: PropTypes.func.isRequired,
+    profile: PropTypes.object.isRequired
 }
 
 

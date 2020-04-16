@@ -12,13 +12,13 @@ const AddExperience = ({ addExperience, history }) => {
         location: '',
         from: `${moment().format('YYYY-MM-DD')}`,
         to: '',
-        current: false,
+        // current: false,
         description: ''
     })
 
     const [toDateDisabled, toggleDisabled] = useState(false);
 
-    const { company, title, location, from, to, current, description } = formData
+    const { company, title, location, from, to, description } = formData
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
@@ -51,22 +51,17 @@ const AddExperience = ({ addExperience, history }) => {
                     {/* <input type="date" name="from" value={from} onChange={e => onChange(e)} /> */}
                     <input min={moment().format('YYYY-MM-DD')} max={moment(from).add(365, 'days').format('YYYY-MM-DD')} type="date" name="from" value={from} onChange={e => onChange(e)} />
                 </div>
-                <h1>{moment(from).add(30, 'days').format('YYYY-MM-DD')}</h1>
-                <h1>{moment().format('YYYY-MM-DD')}</h1>
-                {/* <input id="today" type="date">
-                <script>
-                document.getElementById('today').value = moment().format('YYYY-MM-DD');
-                </script> */}
-
-
-                <div class="form-group">
+                {/* <h1>{moment(from).add(30, 'days').format('YYYY-MM-DD')}</h1> */}
+                {/* <h1>{moment().format('YYYY-MM-DD')}</h1> */}
+            
+                {/* <div class="form-group">
                     <p><input type="checkbox" name="current" checked={current} value={current}
                         onChange={e => {
                             setFormData({ ...formData, current: !current })
                             toggleDisabled(!toDateDisabled)
                         }}
                     /> {' '}Current Job</p>
-                </div>
+                </div> */}
                 <div class="form-group">
                     <h4>To Date</h4>
                     <h5>(Post expires up to 30 days after "From Date")</h5>
@@ -77,7 +72,7 @@ const AddExperience = ({ addExperience, history }) => {
                         name="description"
                         cols="30"
                         rows="5"
-                        placeholder="Job Description"
+                        placeholder="Description..."
                         value={description} onChange={e => onChange(e)}
                     ></textarea>
                 </div>
